@@ -1,0 +1,531 @@
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo - TestReport</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0 auto;
+      width: 960px;
+    }
+    #summary, #details {
+      width: 960px;
+    }
+    #summary th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #summary td {
+      background-color: lightblue;
+      text-align: center;
+      padding: 4px 8px;
+    }
+    #details th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #details td {
+      background-color: lightblue;
+      padding: 5px 12px;
+    }
+    #details .detail {
+      background-color: lightgrey;
+      font-size: smaller;
+      padding: 5px 10px;
+      text-align: center;
+    }
+    #details .success {
+      background-color: greenyellow;
+    }
+    #details .error {
+      background-color: red;
+    }
+    #details .failure {
+      background-color: salmon;
+    }
+    #details .skipped {
+      background-color: gray;
+    }
+
+    .button {
+      font-size: 1em;
+      padding: 6px;
+      width: 4em;
+      text-align: center;
+      background-color: #06d85f;
+      border-radius: 20px/50px;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
+    }
+    a.button{
+      color: gray;
+      text-decoration: none;
+    }
+    .button:hover {
+      background: #2cffbd;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      width: 50%;
+      position: relative;
+      transition: all 3s ease-in-out;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+    .popup .close:hover {
+      color: #06d85f;
+    }
+    .popup .content {
+      max-height: 80%;
+      overflow: auto;
+      text-align: left;
+    }
+
+    @media screen and (max-width: 700px) {
+      .box {
+        width: 70%;
+      }
+      .popup {
+        width: 70%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Test Report: demo</h1>
+
+  <h2>Summary</h2>
+  <table id="summary">
+
+    <tr>
+      <th>START AT</th>
+      <td colspan="4">2018-06-05 11:14:33</td>
+    </tr>
+    <tr>
+      <th>DURATION</th>
+      <td colspan="4">0.085 seconds</td>
+    </tr>
+    <tr>
+      <th>PLATFORM</th>
+      <td>HttpRunner 1.4.5 </td>
+      <td>CPython 3.5.0 </td>
+      <td colspan="2">Windows-7-6.1.7601-SP1</td>
+    </tr>
+    <tr>
+      <th>TOTAL</th>
+      <th>SUCCESS</th>
+      <th>FAILED</th>
+      <th>ERROR</th>
+      <th>SKIPPED</th>
+      <!-- <th>ExpectedFailure</th>
+      <th>UnexpectedSuccess</th> -->
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <!-- <td>0</td>
+      <td>0</td> -->
+    </tr>
+  </table>
+
+  <h2>Details</h2>
+  <table id="details">
+    <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Response Time</th>
+      <th>Detail</th>
+    </tr>
+    
+      <tr id="record_1">
+        <th class="success" style="width:5em;">success</td>
+        <td>queryProject</td>
+        <td style="text-align:center;width:6em;">38.0 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_1">log</a>
+          <div id="popup_log_1" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_1">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://99.48.58.241/mock/config/queryProject</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>User-Agent</strong>: python-requests/2.18.4
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/json
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 2
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>{}</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 05 Jun 2018 03:09:42 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Length</strong>: 430
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "desc": {
+    "capital": [
+      "businessapi/ops/file/upload/2/xydadcce31a92e8b1c5",
+      "mm/credit/getUnderWrittingStatus",
+      "mm/credit/getUnderWrittingStatus/2/xydadcce31a92e8b1c5",
+      "mm/credit/queryAccountInfo",
+      "mm/credit/queryAccountInfo/2/xydadcce31a92e8b1c5",
+      "mm/credit/saveUserInfo/2/xydadcce31a92e8b1c5",
+      "mm/credit/withdrawDeposit/2"
+    ],
+    "ups": [
+      "demo_get",
+      "demo_post",
+      "demo_post_form",
+      "demo_post_json"
+    ]
+  },
+  "host": "192.168.10.54:6000",
+  "code": "000"
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>430</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>38.0</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>34.814</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_2">
+        <th class="error" style="width:5em;">error</td>
+        <td>queryMock</td>
+        <td style="text-align:center;width:6em;">39.0 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_2">log</a>
+          <div id="popup_log_2" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_2">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://99.48.58.241/mock/config/queryMock</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>User-Agent</strong>: python-requests/2.18.4
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/json;charset=UTF-8
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 159
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>{"projectName": "ups", "currentPage": 1, "interfaceName": "demo_post_json", "pageSize": 1, "op": ["demo_get", "demo_post", "demo_post_form", "demo_post_json"]}</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 05 Jun 2018 03:09:42 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Length</strong>: 586
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "tableData": [
+    {
+      "projectName": "ups",
+      "responseBody": "{\"desc\": \"这是一个默认返回\"}",
+      "httpMethod": "POST",
+      "id": 15,
+      "interfaceName": "demo_post_json",
+      "contentType": "application/json;charset=UTF-8",
+      "mockUrl": "http://118.178.173.48:6000/mock/service/ups/demo_post_json",
+      "requestBody": "{}",
+      "isValid": 1,
+      "realUrl": "http://www.baidu.com/demo_post_json",
+      "comment": "默认场景，请求报文默认为{}或\"\"，表示没有匹配到已配置的请求报文时，将使用该条响应报文返回。",
+      "operator": "王永骏",
+      "createTime": "2018-05-15 10:20:33"
+    }
+  ],
+  "totalNum": 2,
+  "code": "000"
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>586</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>39.0</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>37.168</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+            <a class="button" href="#popup_attachment_2">traceback</a>
+            <div id="popup_attachment_2" class="overlay">
+              <div class="popup">
+                <h2>Traceback Message</h2>
+                <a class="close" href="#record_2">&times;</a>
+                <div class="content"><pre>Traceback (most recent call last):
+  File "C:\Python35\lib\site-packages\httprunner\context.py", line 236, in do_validation
+    validate_func(validator_dict["check_value"], validator_dict["expect"])
+  File "C:\Python35\lib\site-packages\httprunner\built_in.py", line 60, in equals
+    assert check_value == expect_value
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python35\lib\site-packages\httprunner\task.py", line 26, in runTest
+    self.test_runner.run_test(self.testcase_dict)
+  File "C:\Python35\lib\site-packages\httprunner\runner.py", line 185, in run_test
+    self.context.validate(validators, resp_obj)
+  File "C:\Python35\lib\site-packages\httprunner\context.py", line 256, in validate
+    self.do_validation(validator_dict)
+  File "C:\Python35\lib\site-packages\httprunner\context.py", line 244, in do_validation
+    raise exception.ValidationError(err_msg)
+httprunner.exception.ValidationError: 
+	check item name: content.code;
+	check item value: 000 (str);
+	comparator: equals;
+	expected value: 100 (str).
+</pre></div>
+              </div>
+            </div>
+          
+
+        </td>
+      </tr>
+    
+  </table>
+</body>

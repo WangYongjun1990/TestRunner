@@ -1,0 +1,98 @@
+[
+    {
+        "config": {
+            "request": {
+                "base_url": "http://99.48.58.241",
+                "headers": {
+                    "Content-Type": "application/json;charset=UTF-8"
+                }
+            },
+            "variables": [
+                {"pageSize": 1},
+                {"currentPage": 1}
+            ],
+            "parameters": [],
+            "name": "testset description"
+        }
+    },
+    {
+        "test": {
+            "request": {
+                "json": {},
+                "url": "/mock/config/queryProject",
+                "headers": {},
+                "method": "POST"
+            },
+            "extract": [
+                {
+                    "mockName": "content.desc.ups"
+                }
+            ],
+            "validate": [
+                {
+                    "eq": [
+                        "status_code",
+                        200
+                    ]
+                },
+                {
+                    "eq": [
+                        "headers.Content-Type",
+                        "application/json"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.code",
+                        "000"
+                    ]
+                }
+            ],
+            "variables": [],
+            "name": "queryProject"
+        }
+    },
+    {
+        "test": {
+            "request": {
+                "json": {
+                    "pageSize": "$pageSize",
+                    "interfaceName": "demo_post_json",
+                    "currentPage": "$currentPage",
+                    "projectName": "ups",
+                    "op": "$mockName"
+                },
+                "url": "/mock/config/queryMock",
+                "headers": {},
+                "method": "POST"
+            },
+            "extract": [
+                {
+                    "tableData": "content.tableData"
+                }
+            ],
+            "validate": [
+                {
+                    "eq": [
+                        "status_code",
+                        200
+                    ]
+                },
+                {
+                    "eq": [
+                        "headers.Content-Type",
+                        "application/json"
+                    ]
+                },
+                {
+                    "eq": [
+                        "content.code",
+                        "000"
+                    ]
+                }
+            ],
+            "variables": [],
+            "name": "queryMock"
+        }
+    }
+]
